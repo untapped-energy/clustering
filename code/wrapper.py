@@ -17,10 +17,8 @@ import matplotlib.mlab as mlab
 from sklearn.cluster import KMeans
 from sklearn import metrics
 from sklearn.cluster import DBSCAN
-# part 4 #
 from sklearn.cluster import AgglomerativeClustering
 from scipy.cluster.hierarchy import linkage, dendrogram
-
 
 exec(open('helper_functions.py').read())
 
