@@ -33,7 +33,7 @@ def predict_print_knn(well_data_df, dist_func, k , target_index, column_str, tit
 
 # simple 2D colour plot
 def plot_single_map(df, xyz_cols = ['x','y','first_order_residual']):
-    fig, ax = plt.subplots(figsize = (8,7))
+    fig, ax = plt.subplots(figsize = (5.5,5))
     ax.set_title(xyz_cols[2])
     ax.tripcolor(df[xyz_cols[0]], df[xyz_cols[1]], df[xyz_cols[2]])
     ax.set_aspect('equal')
@@ -42,7 +42,7 @@ def plot_single_map(df, xyz_cols = ['x','y','first_order_residual']):
 
 # TODO: MAke this function to plot all plots...
 def plot_four_maps(df):
-    plt.figure(figsize=(10, 7))
+    plt.figure(figsize=(8, 8))
     G = gridspec.GridSpec(2, 2)
     ax1 = plt.subplot(G[0, 0])
     ax2 = plt.subplot(G[0, 1])
@@ -69,7 +69,7 @@ def plot_four_maps(df):
     plt.show()
     
 def plot_pca_variance(pca):
-    plt.figure(figsize=(10, 7))
+    plt.figure(figsize=(8, 5))
     G = gridspec.GridSpec(1, 2)
     ax1 = plt.subplot(G[0, 0])
     ax2 = plt.subplot(G[0, 1])
@@ -97,6 +97,8 @@ def plot_pca_unit_circle(pca, df):
                             columns=pca_cols, 
                             index=df.columns)
     
+    
+    plt.figure(figsize=(5.5, 5))
     plt.Circle((0,0),radius=10, color='g', fill=False)
     circle1=plt.Circle((0,0),radius=1, color='g', fill=False)
     fig = plt.gcf()
@@ -111,11 +113,12 @@ def plot_pca_unit_circle(pca, df):
     plt.ylabel("PC-1 (%s%%)" % str(ex_var_ratio[1])[:4].lstrip("0."))
     plt.xlim((-1,1))
     plt.ylim((-1,1))
-    plt.axes.Axes.set_aspect('equal')
     plt.title("Circle of Correlations")
+    plt.tight_layout()
+    plt.show()
     
 def plot_cluster_results(clust_res, df):
-    plt.figure(figsize=(10, 7))
+    plt.figure(figsize=(8, 5))
     G = gridspec.GridSpec(1, 2)
     ax1 = plt.subplot(G[0, 0])
     ax2 = plt.subplot(G[0, 1])
@@ -153,7 +156,7 @@ def kmeans_elbowplot(df, kmax = 12):
         silhouette.append(sil_score)
         calinski_harabaz.append(ch_score)
     
-    plt.figure(figsize=(10, 7))
+    plt.figure(figsize=(8, 8))
     G = gridspec.GridSpec(1, 3)
     ax1 = plt.subplot(G[0, 0])
     ax2 = plt.subplot(G[0, 1])
@@ -176,7 +179,7 @@ def kmeans_elbowplot(df, kmax = 12):
     
 def plot_dendrogram(df, method = 'ward'):
     linkage_matrix = linkage(df, method)
-    figure = plt.figure(figsize=(7.5, 5))
+    figure = plt.figure(figsize=(8, 8))
     dendrogram(
         linkage_matrix,
         color_threshold=0,
