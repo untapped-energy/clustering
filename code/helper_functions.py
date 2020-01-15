@@ -248,3 +248,17 @@ def plot_dendrogram(df, method = 'ward'):
     plt.ylabel('distance')
     plt.tight_layout()
     plt.show()
+    
+def print_clustering_scores(df, cluster_res):
+    """Print clustering scores
+
+    Keyword arguments:
+    df -- the dataframe with the well data
+    cluster_res -- cluster results from k_means or other
+    """
+    inertia = 'Inertia: ' + str(cluster_res.inertia_)
+    print(inertia)
+    ch_score = 'Calinski Harabaz: ' + str(metrics.calinski_harabaz_score(df, cluster_res.labels_))
+    print(ch_score)
+    sil_score = 'Silhouette: ' + str(metrics.silhouette_score(df, cluster_res.labels_, metric='euclidean'))
+    print(sil_score)
