@@ -215,17 +215,20 @@ def kmeans_elbowplot(df, kmax = 12):
     ax2 = plt.subplot(G[0, 1])
     ax3 = plt.subplot(G[0, 2])
     
-    ax1.set_title('WCSS')
-    ax1.set_xlabel('PCA')
+    ax1.set_title('Intertia')
     ax1.plot(range(2, kmax), wcss, c='k')
+    ax1.set_xticks(range(2, 12))
+    ax1.set_xlabel('Clusters')
     
     ax2.set_title('Silhouette Score')
-    ax2.set_xlabel('PCA')
+    ax2.set_xlabel('Clusters')
     ax2.plot(range(2, kmax), silhouette, c='r')
+    ax2.set_xticks(range(2, 12))
 
     ax3.set_title('Calinski Harabaz Score')
-    ax3.set_xlabel('PCA')
+    ax3.set_xlabel('Clusters')
     ax3.plot(range(2, kmax), calinski_harabaz, c='g')
+    ax3.set_xticks(range(2, 12))
     
     plt.tight_layout()
     plt.show()
